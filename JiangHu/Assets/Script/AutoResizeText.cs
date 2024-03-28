@@ -4,13 +4,21 @@ using UnityEngine.UI;
 
 public class AutoResizeText : MonoBehaviour
 {
-    private Image backgroundImage;
-    private TextMeshProUGUI textMesh;
+    private RectTransform EventLine;
+    private RectTransform desImage;
+    private RectTransform itemImage;
+    private TextMeshProUGUI desText;
+    private TextMeshProUGUI itemText;
+    
 
     void Start()
     {
-        backgroundImage = GetComponent<Image>();
-        textMesh = transform.Find("Text").GetComponent<TextMeshProUGUI>();
+        EventLine = GetComponent<RectTransform>();
+        desImage = transform.Find("Image_Up").GetComponent<RectTransform>();
+        desText = transform.Find("Image_Up").transform.Find("Text").GetComponent<TextMeshProUGUI>();
+        itemText = transform.Find("Image_Down").transform.Find("Text").GetComponent<TextMeshProUGUI>();
+        itemImage = transform.Find("Image_Down").GetComponent<RectTransform>();
+
         ResizeText();
     }
 
@@ -21,12 +29,13 @@ public class AutoResizeText : MonoBehaviour
 
     void ResizeText()
     {
-        textMesh.ForceMeshUpdate();
+        desText.ForceMeshUpdate();
+        float preferredHeight = desText.preferredHeight;
+        desImage.sizeDelta = new Vector2(desImage.sizeDelta.x, preferredHeight + 30);
+        EventLine.sizeDelta = new Vector2(EventLine.sizeDelta.x, preferredHeight + itemImage.sizeDelta.y + 30);
 
-        // Adjust the height of the TextMeshPro component based on the text height
-        float preferredHeight = textMesh.preferredHeight;
-        RectTransform textRectTransform = textMesh.GetComponent<RectTransform>();
-        RectTransform backgroundRectTransform = backgroundImage.GetComponent<RectTransform>();
-        backgroundRectTransform.sizeDelta = new Vector2(backgroundImage.GetComponent<RectTransform>().sizeDelta.x, preferredHeight + 10f);
+        //RectTransform textRectTransform = textMesh.GetComponent<RectTransform>();
+        //RectTransform backgroundRectTransform = backgroundImage.GetComponent<RectTransform>();
+        //backgroundRectTransform.sizeDelta = new Vector2(backgroundImage.GetComponent<RectTransform>().sizeDelta.x, preferredHeight + 10f);
     }
 }
