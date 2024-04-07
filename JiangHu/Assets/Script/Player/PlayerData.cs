@@ -6,6 +6,7 @@ public class PlayerData : MonoBehaviour
 {
     public int SP;
     public int SPMax;
+    public int SPMaxBas = 60;
 
 
     void Start()
