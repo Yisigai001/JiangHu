@@ -18,7 +18,7 @@ public class AutoResizeText : MonoBehaviour
         desText = transform.Find("Image_Up").transform.Find("Text").GetComponent<TextMeshProUGUI>();
         itemText = transform.Find("Image_Down").transform.Find("Text").GetComponent<TextMeshProUGUI>();
         itemImage = transform.Find("Image_Down").GetComponent<RectTransform>();
-
+        
         ResizeText();
         
     }
@@ -30,6 +30,7 @@ public class AutoResizeText : MonoBehaviour
         float preferredHeight = desText.preferredHeight;
         desImage.sizeDelta = new Vector2(desImage.sizeDelta.x, preferredHeight + 30);
         EventLine.sizeDelta = new Vector2(EventLine.sizeDelta.x, preferredHeight + itemImage.sizeDelta.y + 30);
+        EventLine.localScale = new Vector3(1, 1, 1);
     }
 
 

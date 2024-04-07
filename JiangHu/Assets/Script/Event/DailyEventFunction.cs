@@ -22,8 +22,10 @@ public class DailyEventFunction : MonoBehaviour
         eventList = new List<GameObject>();
     }
 
+    //点击游历按钮
     public void OnClickEventButton()
     {
+        //临时的，以后得改成读表
         int i = Random.Range(1, 7);
         DailyEventTable.DailyEvent dailyEvent = eventTable.GetDataByID(i);
         if (dailyEvent.Name != null)
@@ -34,6 +36,7 @@ public class DailyEventFunction : MonoBehaviour
             TMP_Text des = newEvent.transform.Find("Image_Up").transform.Find("Text").GetComponent<TMP_Text>();
             des.text = dailyEvent.Describe;
             eventLineParentRect.anchoredPosition = new Vector2(eventLineParentRect.anchoredPosition.x, 0f);
+            //开始添加事件并修改高度
             StartCoroutine(SetNewEventHeight());
         }
         else
@@ -51,13 +54,13 @@ public class DailyEventFunction : MonoBehaviour
     {
         yield return null;
         float y = newEvent.GetComponent<RectTransform>().sizeDelta.y;
-        eventLineParentRect.sizeDelta = new Vector2(eventLineParentRect.sizeDelta.x, eventLineParentRect.sizeDelta.y + y);
+        eventLineParentRect.sizeDelta = new Vector2(eventLineParentRect.sizeDelta.x, eventLineParentRect.sizeDelta.y + y + 5);
         eventList.Add(newEvent);
         if (eventList.Count > 10)
         {
             Debug.Log("大于10" + eventList.Count);
             float z = eventList[0].GetComponent<RectTransform>().sizeDelta.y;
-            eventLineParentRect.sizeDelta = new Vector2(eventLineParentRect.sizeDelta.x, eventLineParentRect.sizeDelta.y - z);
+            eventLineParentRect.sizeDelta = new Vector2(eventLineParentRect.sizeDelta.x, eventLineParentRect.sizeDelta.y - z - 5);
             GameObject destroyEvent = eventList[0];
             eventList.RemoveAt(0);
             Destroy(destroyEvent);
