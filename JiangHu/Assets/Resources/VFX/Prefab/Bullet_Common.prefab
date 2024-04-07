@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6648510710788957044}
   - component: {fileID: 6648510710788957050}
   - component: {fileID: 6648510710788957045}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4821,7 +4821,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6648510711095680443}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet_Common
   m_TagString: Untagged
   m_Icon: {fileID: 0}
