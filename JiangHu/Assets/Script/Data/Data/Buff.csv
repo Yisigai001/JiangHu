@@ -1,0 +1,8 @@
+﻿ID,Buff名,Buff描述,持续时间,触发间隔,buff类型,类型参数1,类型参数2,类型参数3,类型参数4,类型参数5,类型参数6,类型参数7,类型参数8,类型参数9,类型参数10
+ID,Name,Describe,Time,DelayTime,Type,Param1,Param2,Param3,Param4,Param5,Param6,Param7,Param8,Param9,Param10
+int,string,string,float,float,int,int,int,int,int,int,int,int,int,int,int
+1,刚伤害,刚伤害,0,0,1,100,0,0,0,0,0,0,0,0,0
+2,柔伤害,柔伤害,0,0,1,0,100,0,0,0,0,0,0,0,0
+3,阴伤害,阴伤害,0,0,1,0,0,100,0,0,0,0,0,0,0
+4,阳伤害,阳伤害,0,0,1,0,0,0,100,0,0,0,0,0,0
+5,太极伤害,太极伤害,0,0,1,0,0,0,0,100,0,0,0,0,0

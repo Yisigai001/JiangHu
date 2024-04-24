@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CSVReaderNamespace;
 
-public class SkillTable : MonoBehaviour
+public class Zhaoshi_SKillTable : MonoBehaviour
 {
     public TextAsset data; // csv文件
     private List<List<string>> dataList; // csv数据
@@ -13,16 +13,27 @@ public class SkillTable : MonoBehaviour
     public class SkillBase
     {
         public int ID; // ID
-        public string Name; // 属性类型
-        public string Describe; // 道具名称
+        public string Name; // 技能名
+        public string Describe; // 技能描述
+        public string Anim;
+        public float ReleaseDisstance;
+        public int Type;
+        public int MP;
+        public float Cold;
+        public int BulletID;
 
 
-
-        public SkillBase(int id, string name, string describe)
+        public SkillBase(int id, string name, string describe, string anim, float releaseDisstance, int type, int mp, float cold, int bulletID)
         {
             ID = id;
             Name = name;
             Describe = describe;
+            Anim = anim;
+            ReleaseDisstance = releaseDisstance;
+            Type = type;
+            MP = mp;
+            Cold = cold;
+            BulletID = bulletID;
         }
     }
 
@@ -41,8 +52,14 @@ public class SkillTable : MonoBehaviour
             int id = int.Parse(dataList[i][0]);
             string name = dataList[i][1];
             string describe = dataList[i][2];
+            string anim = dataList[i][3];
+            float releaseDisstance = float.Parse(dataList[i][4]);
+            int type = int.Parse(dataList[i][5]);
+            int mp = int.Parse(dataList[i][6]);
+            float cold = float.Parse(dataList[i][7]);
+            int bulletID = int.Parse(dataList[i][8]);
 
-            SkillBase item = new SkillBase(id, name, describe);
+            SkillBase item = new SkillBase(id, name, describe,anim, releaseDisstance, type, mp, cold, bulletID);
             dataDict[id] = item;
         }
     }
