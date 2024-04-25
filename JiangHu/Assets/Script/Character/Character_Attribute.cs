@@ -9,6 +9,8 @@ public class Character_Attribute : MonoBehaviour
     public int characterType;
     public int npcID; //角色id
     public int camp; //阵营
+    public bool die; //噶了
+    public float dieTime;
 
     [Header("基础属性")]
     public int genGu; //根骨
@@ -59,6 +61,7 @@ public class Character_Attribute : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        die = false;
         npcTable = GameObject.Find("DataTable").GetComponent<NpcTable>();
         if (characterType == 2)
         {
@@ -67,6 +70,8 @@ public class Character_Attribute : MonoBehaviour
             SetNPCAttribute(npcBase);
         }
         hpLine = transform.Find("CharacterCanvas").transform.Find("HpLine").gameObject.GetComponent<Image>();
+
+
 
         //临时
         moveSpeed = 1;
@@ -81,6 +86,8 @@ public class Character_Attribute : MonoBehaviour
     void Update()
     {
         HpLine();
+        OnDie();
+        DestroyGameObject();
     }
 
     /// <summary>
@@ -113,10 +120,31 @@ public class Character_Attribute : MonoBehaviour
         {
             float hpLinePer = (float)hp / (float)maxHp;
             hpLine.fillAmount = hpLinePer;
-            Debug.Log("血条进度 = 当前HP: " + hp + " 除以最大HP: " + maxHp + " 最终等于: " + hpLine.fillAmount);
         }
     }
 
+
+    public void OnDie()
+    {
+        if (hp <= 0 && !die)
+        {
+            die = true;
+            dieTime = Time.time;
+            BattleManager battleManager = GameObject.Find("BattleManager").GetComponent<BattleManager>();
+            battleManager.RemoveCharacter(gameObject);
+        }
+    }
+
+    public void DestroyGameObject()
+    {
+        if (die)
+        {
+            if (Time.time - dieTime >= 1)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 
     /// <summary>
     /// 伤害计算
@@ -124,7 +152,6 @@ public class Character_Attribute : MonoBehaviour
     /// <param name="damage"></param>
     public void SetDamage(BuffManager.Damage damage)
     {
-        Debug.Log("开始计算伤害");
         int gangDamage = 0;
         int rouDamage = 0;
         int yangDamage = 0;

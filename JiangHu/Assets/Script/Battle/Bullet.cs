@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Bullet : MonoBehaviour
 {
@@ -16,14 +17,17 @@ public class Bullet : MonoBehaviour
     public int buff4;
     public int buff5;
     public GameObject owner;
+    public GameObject target;
     private Character_Attribute owner_Attribute;
     Rigidbody2D rigidbody2D;
+    private float bulletCreateTime;
     void Start()
     {
         rigidbody2D = gameObject.AddComponent<Rigidbody2D>();
         rigidbody2D.gravityScale = 0;
         rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         owner_Attribute = owner.GetComponent<Character_Attribute>();
+        bulletCreateTime = Time.time;
     }
 
     // Update is called once per frame
@@ -31,20 +35,33 @@ public class Bullet : MonoBehaviour
     {
         Vector2 movement = transform.up * speed;
         rigidbody2D.velocity = movement;
+        RemoveBullet();
     }
 
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Character_Attribute target_Attribute = collision.GetComponent<Character_Attribute>();
-        if (collision.gameObject != owner && owner_Attribute.camp != target_Attribute.camp) 
+        if (collision != null)
         {
-            Character_Buff character_Buff = collision.GetComponent<Character_Buff>();
-            if (buff1 > 0) character_Buff.AddBuff(buff1, owner);
-            if (buff2 > 0) character_Buff.AddBuff(buff2, owner);
-            if (buff3 > 0) character_Buff.AddBuff(buff3, owner);
-            if (buff4 > 0) character_Buff.AddBuff(buff4, owner);
-            if (buff5 > 0) character_Buff.AddBuff(buff5, owner);
+            Character_Attribute target_Attribute = collision.GetComponent<Character_Attribute>();
+            if (collision.gameObject != owner && owner_Attribute.camp != target_Attribute.camp)
+            {
+                target = collision.gameObject;
+                Character_Buff character_Buff = collision.GetComponent<Character_Buff>();
+                if (buff1 > 0) character_Buff.AddBuff(buff1, owner);
+                if (buff2 > 0) character_Buff.AddBuff(buff2, owner);
+                if (buff3 > 0) character_Buff.AddBuff(buff3, owner);
+                if (buff4 > 0) character_Buff.AddBuff(buff4, owner);
+                if (buff5 > 0) character_Buff.AddBuff(buff5, owner);
+            }
+        }
+    }
+
+    private void RemoveBullet()
+    {
+        if (Time.time - bulletCreateTime >= time/1000)
+        {
+            Destroy(gameObject);
         }
     }
 }

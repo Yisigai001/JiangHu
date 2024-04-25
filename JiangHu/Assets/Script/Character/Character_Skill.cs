@@ -11,7 +11,7 @@ public class Character_Skill : MonoBehaviour
     public List<int> skillList;
     public List<int> neiGongList;
     public List<int> qingGongList;
-    [Header("渣都技能列表")]
+    [Header("战斗技能列表")]
     public List<int> useSkillList;
     public List<int> useNeiGongList;
     public List<int> useQingGongList;
@@ -21,6 +21,9 @@ public class Character_Skill : MonoBehaviour
     private SkillManager skillManager;
     private Zhaoshi_SKillTable sKillTable;
     private Character_Controller character_Controller;
+    private BattleManager battleManager;
+
+    private float useSkillTime; //临时,之后需要删除
 
     void Start()
     {
@@ -36,20 +39,19 @@ public class Character_Skill : MonoBehaviour
         skillCoolDownDick = new Dictionary<int, float>();
         skillManager = GameObject.Find("SkillManager").GetComponent<SkillManager>();
         sKillTable = GameObject.Find("DataTable").GetComponent<Zhaoshi_SKillTable>();
+        battleManager = GameObject.Find("BattleManager").GetComponent<BattleManager>();
         character_Controller = GetComponent<Character_Controller>();
-        //测试
-        int linshiSkill = 1;
-        AddSkill(linshiSkill);
-        AddSkillToUseList(); //添加技能到可使用列表
 
-        
     }
 
     // Update is called once per frame
     void Update()
     {
         SkillColdDown(); //技能冷却处理
-        CharacterUseSkill();// 随机使用技能
+        if (character_Controller.target != null)
+        {
+            CharacterUseSkill();// 随机使用技能
+        }
     }
 
     /// <summary>
@@ -108,15 +110,31 @@ public class Character_Skill : MonoBehaviour
     /// </summary>
     public void CharacterUseSkill()
     {
-        if (useSkillList.Count > 0 && character_Controller.inBattle)
+        if (useingSkill) //临时,之后要改.
         {
-            //Debug.Log("角色释放技能");
-            int randomSkill = Random.Range(0, useSkillList.Count);
-            //Debug.Log("技能ID: " + useSkillList[randomSkill]);
-            skillManager.ReleaseSkill(gameObject, useSkillList[randomSkill]);
-            skillCoolDownDick.Add(useSkillList[randomSkill], Time.time);
-            useSkillList.Remove(useSkillList[randomSkill]);
-            SkillColdDown();
+            if (Time.time - useSkillTime >= 1) useingSkill = false;
+        }
+
+
+        if (useSkillList.Count > 0 && battleManager.battleStart &&character_Controller.target != null)
+        {
+            if (!useingSkill)
+            {
+                float distance = Vector2.Distance(transform.position, character_Controller.target.transform.position);
+                for (int i = 0; i < useSkillList.Count; i++)
+                {
+                    if (distance <= sKillTable.GetDataByID(useSkillList[i]).ReleaseDisstance)
+                    {
+                        skillManager.ReleaseSkill(gameObject, useSkillList[i]);
+                        skillCoolDownDick.Add(useSkillList[i], Time.time);
+                        useSkillList.Remove(useSkillList[i]);
+                        SkillColdDown();
+                        useSkillTime = Time.time;
+                        useingSkill = true;
+                        return;
+                    }
+                }
+            }
         }
     }
 
@@ -140,6 +158,7 @@ public class Character_Skill : MonoBehaviour
                         Debug.Log("使用技能列表未包含冷却的技能,所以添加技能.");
                         useSkillList.Add(key);
                         removeList.Add(key);
+                        useSkillList.Sort(); //按照从小到大的顺序排列
                     }
                 }
             }

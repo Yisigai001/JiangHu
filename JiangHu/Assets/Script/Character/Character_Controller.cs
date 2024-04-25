@@ -48,11 +48,11 @@ public class Character_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (battleManager.battleSetDown)
+        if (battleManager.battleStart && enemyList.Count > 0)
         {
             SearchEnemy();
         }
-        if (battleManager.battleStart)
+        if (battleManager.battleStart && enemyList.Count > 0)
         {
             CharacterMove();
         }

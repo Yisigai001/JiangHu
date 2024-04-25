@@ -1,4 +1,9 @@
 ﻿ID,子弹名,子弹描述,子弹类型,子弹速度,子弹持续时间,出发间隔,碰撞后是否消失,VFX,BuffID1,BuffID2,BuffID3,BuffID4,BuffID5
 ID,Name,Describe,Type,Speed,Time,ReleaseDelay,Disappear,VFX,BuffID1,BuffID2,BuffID3,BuffID4,BuffID5
-int,string,string,int,int,int,float,bool,string,int,int,int,int,int
-1,测试001,测试001,1,1,5,0,TRUE,Bullet_Common,1,0,0,0,0
+int,string,string,int,int,float,float,bool,string,int,int,int,int,int
+1,测试001,测试001,1,3,3000,0,TRUE,Bullet_Common1,1,0,0,0,0
+2,测试001,测试001,1,3,3000,0,TRUE,Bullet_Common2,1,0,0,0,0
+3,测试001,测试001,1,3,3000,0,TRUE,Bullet_Common3,1,0,0,0,0
+4,测试001,测试001,1,3,3000,0,TRUE,Bullet_Common4,1,0,0,0,0
+5,测试001,测试001,1,3,3000,0,TRUE,Bullet_Common5,1,0,0,0,0
+6,测试001,测试001,1,3,3000,0,TRUE,Bullet_Common,1,0,0,0,0

@@ -78,5 +78,25 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    public void RemoveCharacter(GameObject gameObject)
+    {
+        for (int i = 0; i < camp1.Count; i++)
+        {
+            if (gameObject == camp1[i])
+            {
+                Debug.Log("¸Éµônpc");
+                camp1.Remove(gameObject);
+            }
+        }
+
+        for (int i = 0; i < camp2.Count; i++)
+        {
+            if (gameObject == camp2[i])
+            {
+                Debug.Log("¸Éµônpc");
+                camp2.Remove(gameObject);
+            }
+        }
+    }
     
 }

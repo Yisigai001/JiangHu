@@ -6,7 +6,7 @@ using CSVReaderNamespace;
 public class Zhaoshi_SKillTable : MonoBehaviour
 {
     public TextAsset data; // csv文件
-    private List<List<string>> dataList; // csv数据
+    public List<List<string>> dataList; // csv数据
     private Dictionary<int, SkillBase> dataDict; // 装备数据字典
 
     // 定义装备数据结构
