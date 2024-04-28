@@ -45,6 +45,13 @@ public class TestPanel : MonoBehaviour
             character_Skill.useSkillList.Add(3);
             character_Skill.useSkillList.Add(4);
             character_Skill.useSkillList.Add(5);
+
+            character_Skill.useQingGongList.Add(7);
+            character_Skill.useQingGongList.Add(8);
+            character_Skill.useQingGongList.Add(9);
+            character_Skill.useQingGongList.Add(10);
+            character_Skill.useQingGongList.Add(11);
         }
+
     }
 }

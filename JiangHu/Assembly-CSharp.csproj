@@ -59,6 +59,7 @@
     <Compile Include="Assets\Script\Event\AutoResizeText.cs" />
     <Compile Include="Assets\Script\Battle\BattleManager.cs" />
     <Compile Include="Assets\Script\Data\Table\Zhaoshi_SKillTable.cs" />
+    <Compile Include="Assets\Script\Test\TestPanel.cs" />
     <Compile Include="Assets\Script\Event\DailyEventFunction.cs" />
     <Compile Include="Assets\Script\Battle\BuffManager.cs" />
     <Compile Include="Assets\Script\Data\Table\BuffTable.cs" />
@@ -74,7 +75,6 @@
     <Compile Include="Assets\Script\Character\Character_Buff.cs" />
     <Compile Include="Assets\Script\Data\Table\ZhaoShi_BulletTable.cs" />
     <Compile Include="Assets\Script\Character\Character_SkillReleasePoint.cs" />
-    <Compile Include="Assets\Script\Test\TestPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

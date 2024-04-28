@@ -21,9 +21,10 @@ public class Zhaoshi_SKillTable : MonoBehaviour
         public int MP;
         public float Cold;
         public int BulletID;
+        public int BuffID;
 
 
-        public SkillBase(int id, string name, string describe, string anim, float releaseDisstance, int type, int mp, float cold, int bulletID)
+        public SkillBase(int id, string name, string describe, string anim, float releaseDisstance, int type, int mp, float cold, int bulletID, int buffID)
         {
             ID = id;
             Name = name;
@@ -34,6 +35,7 @@ public class Zhaoshi_SKillTable : MonoBehaviour
             MP = mp;
             Cold = cold;
             BulletID = bulletID;
+            BuffID = buffID;
         }
     }
 
@@ -58,8 +60,9 @@ public class Zhaoshi_SKillTable : MonoBehaviour
             int mp = int.Parse(dataList[i][6]);
             float cold = float.Parse(dataList[i][7]);
             int bulletID = int.Parse(dataList[i][8]);
+            int buffID = int.Parse(dataList[i][9]);
 
-            SkillBase item = new SkillBase(id, name, describe,anim, releaseDisstance, type, mp, cold, bulletID);
+            SkillBase item = new SkillBase(id, name, describe,anim, releaseDisstance, type, mp, cold, bulletID, buffID);
             dataDict[id] = item;
         }
     }

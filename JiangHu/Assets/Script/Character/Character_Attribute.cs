@@ -69,6 +69,7 @@ public class Character_Attribute : MonoBehaviour
             npcBase = npcTable.GetDataByID(npcID);
             SetNPCAttribute(npcBase);
         }
+
         hpLine = transform.Find("CharacterCanvas").transform.Find("HpLine").gameObject.GetComponent<Image>();
 
 
@@ -214,6 +215,6 @@ public class Character_Attribute : MonoBehaviour
         {
             hp = 0;
         }
-        Debug.Log("…À∫¶ = " + hpDamage);
+        //Debug.Log("…À∫¶ = " + hpDamage);
     }
 }

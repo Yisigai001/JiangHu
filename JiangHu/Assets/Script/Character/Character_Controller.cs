@@ -23,6 +23,7 @@ public class Character_Controller : MonoBehaviour
     public bool inBattle;
     private BattleManager battleManager;
     public List<GameObject> enemyList;
+    private Character_Skill character_Skill;
 
     void Start()
     {
@@ -33,6 +34,8 @@ public class Character_Controller : MonoBehaviour
         SetRigBody(); //…Ë÷√rigbody Ù–‘
         searchTime = Time.time;
         battleManager = GameObject.Find("BattleManager").GetComponent<BattleManager>();
+        character_Skill = GetComponent<Character_Skill>();
+
         animator = GetComponent<Animator>();
         inBattle = false;
         if (attribute.camp == 1)
@@ -117,7 +120,7 @@ public class Character_Controller : MonoBehaviour
     /// </summary>
     public void CharacterMove()
     {
-        if (battleManager.battleStart)
+        if (battleManager.battleStart && !character_Skill.useingSkill)
         {
             if (target != null)
             {

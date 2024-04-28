@@ -6,7 +6,8 @@ public class Character_Skill : MonoBehaviour
 {
     [Header("战斗状态")]
     public bool useingSkill;
-    public bool useingQingGOng;
+    public bool useingQingGong;
+    public bool canUseQingGong;
     [Header("技能列表")]
     public List<int> skillList;
     public List<int> neiGongList;
@@ -35,7 +36,7 @@ public class Character_Skill : MonoBehaviour
         useQingGongList = new List<int>();
         removeList = new List<int>();
         useingSkill = false;
-        useingQingGOng = false;
+        useingQingGong = false;
         skillCoolDownDick = new Dictionary<int, float>();
         skillManager = GameObject.Find("SkillManager").GetComponent<SkillManager>();
         sKillTable = GameObject.Find("DataTable").GetComponent<Zhaoshi_SKillTable>();
@@ -110,15 +111,36 @@ public class Character_Skill : MonoBehaviour
     /// </summary>
     public void CharacterUseSkill()
     {
-        if (useingSkill) //临时,之后要改.
+        if (useingSkill)
         {
-            if (Time.time - useSkillTime >= 1) useingSkill = false;
+            if (Time.time - useSkillTime >= 0.5)
+            {
+                useingSkill = false;
+            }
         }
 
-
-        if (useSkillList.Count > 0 && battleManager.battleStart &&character_Controller.target != null)
+        if (battleManager.battleStart && character_Controller.target != null)
         {
-            if (!useingSkill)
+            if (!useingSkill && !useingQingGong && canUseQingGong)
+            {
+                if (useQingGongList.Count > 0)
+                {
+                    for (int i = 0; i < useQingGongList.Count; i++)
+                    {
+                        skillManager.ReleaseSkill(gameObject, useQingGongList[i]);
+                        useSkillTime = Time.time;
+                        skillCoolDownDick.Add(useQingGongList[i], Time.time);
+                        useQingGongList.Remove(useQingGongList[i]);
+                        SkillColdDown();
+
+                    }
+                }
+                else
+                {
+                    canUseQingGong = false;
+                }
+            }
+            else if (!useingSkill && !canUseQingGong && !useingQingGong)
             {
                 float distance = Vector2.Distance(transform.position, character_Controller.target.transform.position);
                 for (int i = 0; i < useSkillList.Count; i++)
@@ -130,13 +152,14 @@ public class Character_Skill : MonoBehaviour
                         useSkillList.Remove(useSkillList[i]);
                         SkillColdDown();
                         useSkillTime = Time.time;
-                        useingSkill = true;
+                        //useingSkill = true;
                         return;
                     }
                 }
             }
         }
     }
+
 
     /// <summary>
     /// 设置技能冷却
@@ -155,17 +178,25 @@ public class Character_Skill : MonoBehaviour
                 {
                     if (!useSkillList.Contains(key))
                     {
-                        Debug.Log("使用技能列表未包含冷却的技能,所以添加技能.");
-                        useSkillList.Add(key);
-                        removeList.Add(key);
-                        useSkillList.Sort(); //按照从小到大的顺序排列
+                        //Debug.Log("使用技能列表未包含冷却的技能,所以添加技能.");
+                        if (skillBase.Type == 1)
+                        {
+                            useSkillList.Add(key);
+                            removeList.Add(key);
+                            //useSkillList.Sort(); //按照从小到大的顺序排列
+                        }
+                        else if (skillBase.Type == 10)
+                        {
+                            useQingGongList.Add(key);
+                            removeList.Add(key);
+                        }
                     }
                 }
             }
         }
         if (removeList.Count > 0)
         {
-            Debug.Log("冷却组里删除技能");
+            //Debug.Log("冷却组里删除技能");
             for (int i = 0; i < removeList.Count; i++)
             {
                 skillCoolDownDick.Remove(removeList[i]);

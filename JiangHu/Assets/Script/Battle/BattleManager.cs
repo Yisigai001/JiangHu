@@ -84,7 +84,7 @@ public class BattleManager : MonoBehaviour
         {
             if (gameObject == camp1[i])
             {
-                Debug.Log("干掉npc");
+                //Debug.Log("干掉npc");
                 camp1.Remove(gameObject);
             }
         }
@@ -93,7 +93,7 @@ public class BattleManager : MonoBehaviour
         {
             if (gameObject == camp2[i])
             {
-                Debug.Log("干掉npc");
+                //Debug.Log("干掉npc");
                 camp2.Remove(gameObject);
             }
         }

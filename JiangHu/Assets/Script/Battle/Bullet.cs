@@ -43,16 +43,28 @@ public class Bullet : MonoBehaviour
     {
         if (collision != null)
         {
-            Character_Attribute target_Attribute = collision.GetComponent<Character_Attribute>();
-            if (collision.gameObject != owner && owner_Attribute.camp != target_Attribute.camp)
+            if (collision.gameObject.layer == 6)
             {
-                target = collision.gameObject;
-                Character_Buff character_Buff = collision.GetComponent<Character_Buff>();
-                if (buff1 > 0) character_Buff.AddBuff(buff1, owner);
-                if (buff2 > 0) character_Buff.AddBuff(buff2, owner);
-                if (buff3 > 0) character_Buff.AddBuff(buff3, owner);
-                if (buff4 > 0) character_Buff.AddBuff(buff4, owner);
-                if (buff5 > 0) character_Buff.AddBuff(buff5, owner);
+                Character_Attribute target_Attribute = collision.GetComponent<Character_Attribute>();
+                if (collision.gameObject != owner && owner_Attribute.camp != target_Attribute.camp)
+                {
+                    target = collision.gameObject;
+                    Character_Buff character_Buff = collision.GetComponent<Character_Buff>();
+                    if (buff1 > 0) character_Buff.AddBuff(buff1, owner);
+                    if (buff2 > 0) character_Buff.AddBuff(buff2, owner);
+                    if (buff3 > 0) character_Buff.AddBuff(buff3, owner);
+                    if (buff4 > 0) character_Buff.AddBuff(buff4, owner);
+                    if (buff5 > 0) character_Buff.AddBuff(buff5, owner);
+                }
+            }
+            else if (collision.gameObject.layer == 9)
+            {
+                if (collision.transform.parent.gameObject != owner)
+                {
+                    Character_Skill character_Skill = collision.transform.parent.GetComponent<Character_Skill>();
+                    character_Skill.canUseQingGong = true;
+                    Debug.Log("找到了父节点: " + character_Skill);
+                }
             }
         }
     }

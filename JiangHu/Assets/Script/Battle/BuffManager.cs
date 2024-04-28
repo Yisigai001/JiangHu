@@ -66,7 +66,7 @@ public class BuffManager : MonoBehaviour
     /// <returns></returns>
     public BuffTable.Buff CreateBuff(int buffID, float buffCreateTime, GameObject buffCreater)
     {
-        Debug.Log("创建Buff");
+        //Debug.Log("创建Buff");
         BuffTable.Buff buff = buffTable.GetDataByID(buffID);
         buff.BuffCreateTime = buffCreateTime;
         buff.BuffCreater = buffCreater;
@@ -82,7 +82,7 @@ public class BuffManager : MonoBehaviour
     /// <returns></returns>
     public Damage CreateDamage(BuffTable.Buff buff, Character_Attribute attribute)
     {
-        Debug.Log("创建伤害");
+        //Debug.Log("创建伤害");
         int gangBase = attribute.gangAttack;
         int rouBase = attribute.rouAttack;
         int yangBase = attribute.yangAttack;
