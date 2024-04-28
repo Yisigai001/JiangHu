@@ -63,4 +63,10 @@ public class TestPanel : MonoBehaviour
         npcSkill.useQingGongList.Add(8);
         npcSkill.useQingGongList.Add(9);
     }
+
+    public void OnStartBattle()
+    {
+        BattleManager battleManager = GameObject.Find("BattleManager").GetComponent<BattleManager>();
+        battleManager.battleStart = true;
+    }
 }

@@ -23,7 +23,11 @@ public class SkillManager : MonoBehaviour
 
         //设置使用技能中状态
         Character_Skill character_Skill = skillOnwer.GetComponent<Character_Skill>();
-        
+
+        Character_Controller characterController = skillOnwer.GetComponent<Character_Controller>();
+        characterController.CharacterTurn();
+        Animator animator = skillOnwer.transform.Find("Body").GetComponent<Animator>();
+        animator.SetBool("Skill", true);
 
         if (skill.Type == 1) //攻击类型技能
         {

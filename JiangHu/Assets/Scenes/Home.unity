@@ -652,6 +652,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1765036866, guid: 491036bad38b9e5478d388d7cf9ca5f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnStartBattle
+      objectReference: {fileID: 0}
     - target: {fileID: 9075692348261396572, guid: 491036bad38b9e5478d388d7cf9ca5f9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

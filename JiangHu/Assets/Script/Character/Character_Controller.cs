@@ -36,7 +36,7 @@ public class Character_Controller : MonoBehaviour
         battleManager = GameObject.Find("BattleManager").GetComponent<BattleManager>();
         character_Skill = GetComponent<Character_Skill>();
 
-        animator = GetComponent<Animator>();
+        animator = transform.Find("Body").GetComponent<Animator>();
         inBattle = false;
         if (attribute.camp == 1)
         {
@@ -153,7 +153,7 @@ public class Character_Controller : MonoBehaviour
         }
     }
 
-    private void CharacterTurn()
+    public void CharacterTurn()
     {
         if (target != null)
         {
