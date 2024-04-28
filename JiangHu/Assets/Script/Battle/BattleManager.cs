@@ -6,8 +6,7 @@ using UnityEngine.TextCore.Text;
 public class BattleManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    GameObject playerObj;
-    GameObject npcObj;
+    GameObject characterOBJ;
     public GameObject playerPos;
     public GameObject npcPos;
     public List<GameObject> camp1;
@@ -21,8 +20,7 @@ public class BattleManager : MonoBehaviour
         battleSetDown = false;
         camp1 = new List<GameObject>();
         camp2 = new List<GameObject>();
-        playerObj = Resources.Load<GameObject>("Character/Prefab/Player");
-        npcObj = Resources.Load<GameObject>("Character/Prefab/Npc");
+        characterOBJ = Resources.Load<GameObject>("Character/Prefab/Character");
         zPos = -0.15f;
         npcTable = GameObject.Find("DataTable").GetComponent<NpcTable>();
         SetBattle();
@@ -46,7 +44,8 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     public void OnCreatePlayer()
     {
-        GameObject player = Instantiate(playerObj);
+        GameObject player = Instantiate(characterOBJ);
+        player.tag = "Player";
         Character_Attribute character_Attribute = player.GetComponent<Character_Attribute>();
         character_Attribute.characterType = 1;
         character_Attribute.npcID = 0;
@@ -62,7 +61,9 @@ public class BattleManager : MonoBehaviour
     /// <param name="ÕóÓª"></param>
     public void OnCreateNPC(int objectID, int camp)
     {
-        GameObject npc = Instantiate(npcObj);
+        GameObject npc = Instantiate(characterOBJ);
+        npc.tag = "NPC";
+        npc.transform.Find("Main Camera").gameObject.SetActive(false);
         Character_Attribute character_Attribute = npc.GetComponent<Character_Attribute>();
         character_Attribute.characterType = 2;
         character_Attribute.npcID = objectID;

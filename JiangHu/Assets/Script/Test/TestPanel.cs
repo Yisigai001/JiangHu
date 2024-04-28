@@ -53,5 +53,14 @@ public class TestPanel : MonoBehaviour
             character_Skill.useQingGongList.Add(11);
         }
 
+        GameObject npc = GameObject.FindWithTag("NPC");
+        Character_Skill npcSkill = npc.GetComponent<Character_Skill>();
+        npcSkill.useSkillList.Add(1);
+        npcSkill.useSkillList.Add(2);
+        npcSkill.useSkillList.Add(3);
+
+        npcSkill.useQingGongList.Add(7);
+        npcSkill.useQingGongList.Add(8);
+        npcSkill.useQingGongList.Add(9);
     }
 }

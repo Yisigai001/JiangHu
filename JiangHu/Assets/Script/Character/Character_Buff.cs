@@ -68,6 +68,7 @@ public class Character_Buff : MonoBehaviour
                     if (buffList[i].Type == 2) //类型为2的是给自己加buff,删buff时候把使用技能置位false;
                     {
                         character_Skill.useingQingGong = false;
+                        character_Skill.canUseQingGong = false;
                     }
                     BuffTable.Buff buff = buffList[i];
                     buffList.Remove(buffList[i]);
