@@ -14,7 +14,6 @@ public class SkillManager : MonoBehaviour
     {
         sKillTable = GameObject.Find("DataTable").GetComponent<Zhaoshi_SKillTable>();
         bulletTable = GameObject.Find("DataTable").GetComponent<ZhaoShi_BulletTable>();
-        buffTable = GameObject.Find("DataTable").GetComponent<BuffTable>();
     }
 
     public void ReleaseSkill(GameObject skillOnwer, int skillID)

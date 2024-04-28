@@ -106,19 +106,14 @@ public class Character_Skill : MonoBehaviour
         }
     }
     
+
+    
+
     /// <summary>
     /// 随机释放技能
     /// </summary>
     public void CharacterUseSkill()
     {
-        if (useingSkill)
-        {
-            if (Time.time - useSkillTime >= 0.5)
-            {
-                useingSkill = false;
-            }
-        }
-
         if (battleManager.battleStart && character_Controller.target != null)
         {
             if (!useingSkill && !useingQingGong && canUseQingGong)
