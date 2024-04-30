@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3d8dfb30cc033b6499ec75c942c64fa5
+guid: 6334d89b3d50ff4458c7594fdfec9ad6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -103,14 +103,14 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 50
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -119,59 +119,49 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones:
-    - name: Head
-      guid: 6e8db7d268f0ed24c903a41235d5fe86
-      position: {x: 239.11336, y: 299.53806, z: 0}
-      rotation: {x: 0, y: 0, z: 0.71259063, w: 0.7015801}
-      length: 148.83878
+    - name: Spine
+      guid: 52da8725764fc5145a24b51a46ee2c81
+      position: {x: 236.43633, y: 207.84656, z: 0}
+      rotation: {x: 0, y: 0, z: 0.6967121, w: 0.71735096}
+      length: 91.73059
       parentId: -1
       color:
         serializedVersion: 2
-        rgba: 4294967040
+        rgba: 4278255360
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 1537655665
     vertices:
-    - {x: 224.001, y: 295.007}
-    - {x: 258.181, y: 301.478}
-    - {x: 274.332, y: 309.479}
-    - {x: 309.098, y: 330.222}
-    - {x: 312.699, y: 352.801}
-    - {x: 308.888, y: 409.498}
-    - {x: 286.59, y: 435.408}
-    - {x: 254.43, y: 447}
-    - {x: 212.489, y: 443.658}
-    - {x: 184.371, y: 425.671}
-    - {x: 172, y: 409.27698}
-    - {x: 169.263, y: 384.738}
-    - {x: 182.379, y: 322.375}
-    - {x: 190.29199, y: 306.944}
-    - {x: 220.276, y: 294.424}
-    indices: 000000000c00000001000000000000000d0000000c000000000000000e0000000d000000010000000b00000002000000010000000c0000000b000000020000000400000003000000020000000700000004000000020000000b00000007000000040000000700000005000000050000000700000006000000070000000b00000008000000080000000b00000009000000090000000b0000000a000000
+    - {x: 237.098, y: 161.782}
+    - {x: 252.224, y: 164.22299}
+    - {x: 280, y: 189.761}
+    - {x: 283.577, y: 255.141}
+    - {x: 286.24045, y: 289.59235}
+    - {x: 256.75372, y: 318.98404}
+    - {x: 223.84853, y: 318.69016}
+    - {x: 210.739, y: 295.172}
+    - {x: 197.998, y: 247.336}
+    - {x: 202.202, y: 191.801}
+    - {x: 227.216, y: 165.393}
+    - {x: 236.293, y: 161.293}
+    - {x: 223.01123, y: 298.90186}
+    - {x: 260.10608, y: 303.36264}
+    indices: 000000000a00000001000000000000000b0000000a000000010000000a00000002000000020000000800000003000000020000000900000008000000020000000a00000009000000030000000d0000000400000003000000080000000c000000030000000c0000000d000000050000000c00000006000000050000000d0000000c000000070000000c00000008000000
     edges:
     - {x: 0, y: 1}
-    - {x: 0, y: 14}
+    - {x: 0, y: 11}
     - {x: 1, y: 2}
     - {x: 2, y: 3}
     - {x: 3, y: 4}
-    - {x: 4, y: 5}
+    - {x: 4, y: 13}
     - {x: 5, y: 6}
-    - {x: 6, y: 7}
+    - {x: 5, y: 13}
+    - {x: 6, y: 12}
     - {x: 7, y: 8}
+    - {x: 7, y: 12}
     - {x: 8, y: 9}
     - {x: 9, y: 10}
     - {x: 10, y: 11}
-    - {x: 11, y: 12}
-    - {x: 12, y: 13}
-    - {x: 13, y: 14}
     weights:
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 0
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
     - weight[0]: 1
       weight[1]: 0
       weight[2]: 0
