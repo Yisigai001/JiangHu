@@ -5,6 +5,8 @@ using UnityEngine;
 public class Character_Skill : MonoBehaviour
 {
     [Header("Õ½¶·×´Ì¬")]
+    public bool playAnim;
+    public bool releaseSkill;
     public bool useingSkill;
     public bool useingQingGong;
     public bool canUseQingGong;

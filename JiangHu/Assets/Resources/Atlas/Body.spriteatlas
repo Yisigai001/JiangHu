@@ -40,14 +40,12 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 94f5f200568ed064780cf1e850b7bb13, type: 3}
-  - {fileID: 21300000, guid: 3d8dfb30cc033b6499ec75c942c64fa5, type: 3}
   - {fileID: 21300000, guid: cd4ba4e2aac65b3418fc090afed983f2, type: 3}
   - {fileID: 21300000, guid: fb12dde715633154ab75be5ad585193d, type: 3}
   - {fileID: 21300000, guid: 6334d89b3d50ff4458c7594fdfec9ad6, type: 3}
   - {fileID: 21300000, guid: e5c9c2ce78c3e4649a7a89a5bb0bec5f, type: 3}
   m_PackedSpriteNamesToIndex:
   - Leg_R
-  - Head
   - Arm_R
   - Arm_L
   - Spine

@@ -9,6 +9,7 @@ public class SkillManager : MonoBehaviour
     ZhaoShi_BulletTable bulletTable;
     BuffTable buffTable;
     private string vfxPath = "VFX/Prefab/";
+    private string animPath = "Character/Anim/";
 
     void Start()
     {

@@ -8,4 +8,11 @@ public class AnimatorEvent : MonoBehaviour
     {
 
     }
+
+    public void OnAnimDone()
+    {
+
+    }
+
 }
+

@@ -60,6 +60,7 @@
     <Compile Include="Assets\Script\Battle\BattleManager.cs" />
     <Compile Include="Assets\Script\Data\Table\Zhaoshi_SKillTable.cs" />
     <Compile Include="Assets\Script\Test\TestPanel.cs" />
+    <Compile Include="Assets\Script\LogIn.cs" />
     <Compile Include="Assets\Script\Event\DailyEventFunction.cs" />
     <Compile Include="Assets\Script\Battle\BuffManager.cs" />
     <Compile Include="Assets\Script\Data\Table\BuffTable.cs" />
